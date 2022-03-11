@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>DATE OF BIRTH</th>
+      <th>PHONE NUMBER</th>
+      <th>EMAIL</th>
+      <th>CLASS ROOM</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:object="${student}">
+      <td th:text="*{id}"></td>
+      <td th:text="*{name}"></td>
+      <td th:text="*{dateOfBirth}"></td>
+      <td th:text="*{phoneNumber}"></td>
+      <td th:text="*{email}"></td>
+      <td th:text="*{classRoom.name}"></td>
+      <td>
+        <button type="button" class="btn btn-warning"><a th:href="@{/edit(id=*{id})}">Edit</a></button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger"><a th:href="@{/delete(id=*{id})}">Delete</a></button>
+      </td>
+    </tr>
+    <td>
+      <div class="input-group-append">
+        <a href="/student" class="btn btn-warning">Back to homepage</a>
+      </div>
+    </td>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
